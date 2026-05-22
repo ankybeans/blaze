@@ -1,0 +1,431 @@
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_140001e30(HWND param_1)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  char cVar3;
+  undefined8 uVar4;
+  int iVar5;
+  undefined4 uVar6;
+  undefined4 uVar7;
+  HDC pHVar8;
+  undefined8 *puVar9;
+  HMODULE hInst;
+  HICON hIcon;
+  ulonglong *puVar10;
+  longlong *plVar11;
+  HDC hdcDst;
+  ulonglong uVar12;
+  ulonglong uVar13;
+  undefined8 uVar14;
+  longlong lVar15;
+  uint uVar16;
+  LPCSTR lpMultiByteStr;
+  char *lpMultiByteStr_00;
+  undefined8 uVar17;
+  float fVar18;
+  undefined1 auStackY_278 [32];
+  undefined8 local_220;
+  int local_218;
+  undefined8 local_210;
+  undefined8 local_208;
+  undefined8 local_200;
+  HWND local_1f8;
+  HDC local_1f0;
+  HBITMAP local_1e8;
+  undefined8 local_1e0;
+  undefined8 local_1d8;
+  undefined8 local_1d0;
+  undefined8 local_1c8;
+  void *local_1c0;
+  float local_1b8;
+  undefined4 uStack_1b4;
+  undefined4 uStack_1b0;
+  undefined4 uStack_1ac;
+  BLENDFUNCTION local_1a8 [2];
+  float local_1a0;
+  undefined4 uStack_19c;
+  undefined4 uStack_198;
+  undefined4 uStack_194;
+  undefined8 local_190;
+  undefined8 uStack_188;
+  undefined8 local_180;
+  undefined8 local_178;
+  POINT local_170;
+  SIZE local_168;
+  POINT local_160;
+  undefined8 local_158;
+  undefined8 local_150;
+  undefined8 local_148;
+  undefined8 local_140;
+  undefined8 local_138;
+  undefined8 uStack_130;
+  BITMAPINFO local_128;
+  tagRECT local_f8;
+  tagRECT local_e8;
+  WCHAR local_d8 [8];
+  WCHAR local_c8 [16];
+  CHAR local_a8 [32];
+  WCHAR local_88 [16];
+  ulonglong local_68;
+  
+  if (param_1 != (HWND)0x0) {
+    local_68 = DAT_140011000 ^ (ulonglong)auStackY_278;
+    local_1f8 = param_1;
+    GetClientRect(param_1,&local_f8);
+    local_128.bmiHeader.biClrImportant = 0;
+    local_128.bmiColors[0].rgbBlue = '\0';
+    local_128.bmiColors[0].rgbGreen = '\0';
+    local_128.bmiColors[0].rgbRed = '\0';
+    local_128.bmiColors[0].rgbReserved = '\0';
+    uVar13 = 0;
+    local_1d8 = CONCAT44(local_1d8._4_4_,local_f8.right);
+    local_218 = local_f8.bottom;
+    local_128.bmiHeader.biSizeImage = 0;
+    local_128.bmiHeader.biXPelsPerMeter = 0;
+    local_128.bmiHeader.biYPelsPerMeter = 0;
+    local_128.bmiHeader.biClrUsed = 0;
+    local_128.bmiHeader.biSize = 0x28;
+    local_128.bmiHeader.biHeight = -local_f8.bottom;
+    local_128.bmiHeader.biWidth = local_f8.right;
+    local_128.bmiHeader.biPlanes = 1;
+    local_128.bmiHeader.biBitCount = 0x20;
+    local_128.bmiHeader.biCompression = 0;
+    local_1c0 = (void *)0x0;
+    pHVar8 = CreateCompatibleDC((HDC)0x0);
+    local_1f0 = pHVar8;
+    local_1e8 = CreateDIBSection(pHVar8,&local_128,0,&local_1c0,(HANDLE)0x0,0);
+    SelectObject(pHVar8,local_1e8);
+    local_1e0 = 0;
+    GdipCreateFromHDC(pHVar8,&local_1e0);
+    uVar4 = local_1e0;
+    GdipSetSmoothingMode(local_1e0,4);
+    GdipSetTextRenderingHint(uVar4,3);
+    GdipGraphicsClear(uVar4,0);
+    puVar9 = FUN_140001b60(0.0,0.0,(float)local_f8.right,(float)local_f8.bottom,12.0);
+    local_1e0 = CONCAT44(local_f8.bottom,local_f8.right);
+    local_220 = 0;
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    GdipCreateLineBrushI(&local_220,&local_1e0,0xff0d1117,0xff161b22);
+    local_200 = CONCAT44(uStack_1b4,local_1b8);
+    GdipFillPath(uVar4,local_200,*puVar9);
+    local_178 = 0;
+    local_180 = 0;
+    uVar6 = GdipCreatePen1(0x3022ff55,0x3f800000,0,&local_180);
+    local_178 = CONCAT44(local_178._4_4_,uVar6);
+    if (puVar9 == (undefined8 *)0x0) {
+      GdipDrawPath(uVar4,local_180,0);
+    }
+    else {
+      GdipDrawPath(uVar4,local_180,*puVar9);
+      GdipDeletePath(*puVar9);
+      GdipFree(puVar9);
+    }
+    local_140 = 0;
+    local_148 = 0;
+    uVar6 = GdipCreatePen1(0xff22ff55,0x40000000,0,&local_148);
+    local_140 = CONCAT44(local_140._4_4_,uVar6);
+    GdipDrawLineI(uVar4,local_148,0xc,1);
+    hInst = GetModuleHandleW((LPCWSTR)0x0);
+    hIcon = LoadImageW(hInst,L"IDI_ICON1",1,0xe,0xe,0);
+    if (hIcon != (HICON)0x0) {
+      DrawIconEx(pHVar8,0xe,10,hIcon,0xe,0xe,0,(HBRUSH)0x0,3);
+      DestroyIcon(hIcon);
+    }
+    puVar10 = (ulonglong *)FUN_140001d10(L"Orbitron");
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    uVar12 = uVar13;
+    if (puVar10 != (ulonglong *)0x0) {
+      uVar12 = *puVar10;
+    }
+    GdipCreateFont(uVar12,0x41000000,1,2);
+    uVar1 = CONCAT44(uStack_1b4,local_1b8);
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    GdipCreateSolidFill(0x8022ff55,&local_1b8);
+    uVar2 = CONCAT44(uStack_1b4,local_1b8);
+    fVar18 = 34.0;
+    uVar12 = uVar13;
+    do {
+      local_1e0._0_4_ = (uint)(ushort)L"BLAZE MACRO"[(int)uVar12];
+      uStack_19c = 0x41500000;
+      uStack_198 = 0;
+      uStack_194 = 0;
+      local_1a0 = fVar18;
+      GdipDrawString(uVar4,&local_1e0,1,uVar1);
+      uStack_188 = 0;
+      local_190 = 0;
+      local_138 = 0;
+      uStack_130 = 0;
+      GdipMeasureString(uVar4,&local_1e0,1,uVar1);
+      uVar16 = (int)uVar12 + 1;
+      uVar12 = (ulonglong)uVar16;
+      fVar18 = fVar18 + ((float)uStack_188 - 3.0) + 3.0;
+    } while (L"BLAZE MACRO"[(int)uVar16] != L'\0');
+    iVar5 = (int)local_1d8;
+    if (puVar10 != (ulonglong *)0x0) {
+      GdipDeleteFontFamily(*puVar10);
+      GdipFree(puVar10);
+    }
+    puVar10 = (ulonglong *)FUN_140001d10(L"Orbitron");
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    if (puVar10 != (ulonglong *)0x0) {
+      uVar13 = *puVar10;
+    }
+    GdipCreateFont(uVar13,0x41b00000,1,2);
+    cVar3 = DAT_140011248;
+    local_138 = CONCAT44(uStack_1b4,local_1b8);
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    uVar6 = 0xffff4444;
+    uVar14 = 0xff22ff55;
+    if (DAT_140011248 == '\0') {
+      uVar14 = 0xffff4444;
+    }
+    GdipCreateSolidFill(uVar14,&local_1b8);
+    local_208 = CONCAT44(uStack_1b4,local_1b8);
+    lpMultiByteStr = "OFF";
+    if (cVar3 != '\0') {
+      lpMultiByteStr = "ON";
+    }
+    MultiByteToWideChar(0,0,lpMultiByteStr,-1,local_d8,8);
+    local_190 = 0x4200000041600000;
+    uStack_188 = 0;
+    GdipDrawString(uVar4,local_d8,0xffffffff,local_138);
+    if (puVar10 != (ulonglong *)0x0) {
+      GdipDeleteFontFamily(*puVar10);
+      GdipFree(puVar10);
+    }
+    plVar11 = FUN_140001d10(L"Consolas");
+    local_1d8 = 0;
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    if (plVar11 == (longlong *)0x0) {
+      GdipCreateFont(0,0x41400000,1,2);
+      lVar15 = 0;
+    }
+    else {
+      GdipCreateFont(*plVar11);
+      lVar15 = *plVar11;
+    }
+    uVar14 = local_1d8;
+    uVar17 = 2;
+    local_210 = local_1d8;
+    GdipCreateFont(lVar15,0x41400000,0);
+    local_1e0 = CONCAT44(uStack_1b4,local_1b8);
+    FUN_140001110(local_a8,&DAT_14000c980,(ulonglong)DAT_1400113e8,uVar17);
+    MultiByteToWideChar(0,0,local_a8,-1,local_c8,0x10);
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    uVar17 = 0xff22ff55;
+    if (cVar3 == '\0') {
+      uVar17 = 0xff8b949e;
+    }
+    GdipCreateSolidFill(uVar17,&local_1b8);
+    local_190 = CONCAT44(uStack_1b4,local_1b8);
+    local_1a0 = 14.0;
+    uStack_19c = 0x42680000;
+    uStack_198 = 0;
+    uStack_194 = 0;
+    GdipDrawString(uVar4,local_c8,0xffffffff,uVar14);
+    local_1c8 = 0;
+    local_1d0 = 0;
+    local_1a0 = 0.0;
+    uStack_19c = 0;
+    uStack_198 = 0;
+    uStack_194 = 0;
+    GdipMeasureString(uVar4,local_c8,0xffffffff,uVar14);
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    GdipCreateSolidFill(0xff8b949e,&local_1b8);
+    local_1a0 = local_1b8;
+    uStack_19c = uStack_1b4;
+    local_1b8 = ((float)local_1c8 + 14.0) - 2.0;
+    uStack_1b4 = 0x42680000;
+    uStack_1b0 = 0;
+    uStack_1ac = 0;
+    GdipDrawString(uVar4,L" CPS",4,local_1e0);
+    if (plVar11 != (longlong *)0x0) {
+      GdipDeleteFontFamily(*plVar11);
+      GdipFree(plVar11);
+    }
+    lVar15 = 0;
+    local_150 = 0;
+    local_158 = 0;
+    uVar7 = GdipCreatePen1(0x1522ff55,0x3f800000,0,&local_158);
+    local_150 = CONCAT44(local_150._4_4_,uVar7);
+    GdipDrawLineI(uVar4,local_158,0xe,0x50);
+    plVar11 = FUN_140001d10(L"Rajdhani");
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    if (plVar11 != (longlong *)0x0) {
+      lVar15 = *plVar11;
+    }
+    GdipCreateFont(lVar15,0x41300000,1,2);
+    cVar3 = DAT_1400111ec;
+    local_220 = CONCAT44(uStack_1b4,local_1b8);
+    local_1d8 = 0;
+    if (DAT_1400111ec == '\0') {
+      uVar6 = 0xff22ff55;
+    }
+    GdipCreateSolidFill(uVar6,&local_1d8);
+    lpMultiByteStr_00 = "READY";
+    if (cVar3 != '\0') {
+      lpMultiByteStr_00 = "PAUSED";
+    }
+    MultiByteToWideChar(0,0,lpMultiByteStr_00,-1,local_88,0x10);
+    lVar15 = 0;
+    local_1b8 = 14.0;
+    uStack_1b4 = 0x42b00000;
+    uStack_1b0 = 0;
+    uStack_1ac = 0;
+    GdipDrawString(uVar4,local_88,0xffffffff,local_220);
+    if (plVar11 != (longlong *)0x0) {
+      GdipDeleteFontFamily(*plVar11);
+      GdipFree(plVar11);
+    }
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    GdipCreateSolidFill(0xff333333,&local_1b8);
+    uVar14 = CONCAT44(uStack_1b4,local_1b8);
+    plVar11 = FUN_140001d10(L"Consolas");
+    local_1b8 = 0.0;
+    uStack_1b4 = 0;
+    if (plVar11 != (longlong *)0x0) {
+      lVar15 = *plVar11;
+    }
+    GdipCreateFont(lVar15,0x41200000,0,2);
+    uVar17 = CONCAT44(uStack_1b4,local_1b8);
+    local_1b8 = (float)(iVar5 + -0x18);
+    uStack_1b4 = 0x42b00000;
+    uStack_1b0 = 0;
+    uStack_1ac = 0;
+    GdipDrawString(uVar4,&DAT_14000ca24,2,uVar17);
+    if (plVar11 != (longlong *)0x0) {
+      GdipDeleteFontFamily(*plVar11);
+      GdipFree(plVar11);
+    }
+    GdipDeleteFont(uVar17);
+    GdipDeleteBrush(uVar14);
+    GdipDeleteBrush(local_1d8);
+    GdipDeleteFont(local_220);
+    GdipDeletePen(local_158);
+    GdipDeleteBrush(CONCAT44(uStack_19c,local_1a0));
+    GdipDeleteBrush(local_190);
+    GdipDeleteFont(local_1e0);
+    GdipDeleteFont(local_210);
+    GdipDeleteBrush(local_208);
+    GdipDeleteFont(local_138);
+    GdipDeleteBrush(uVar2);
+    GdipDeleteFont(uVar1);
+    GdipDeletePen(local_148);
+    GdipDeletePen(local_180);
+    GdipDeleteBrush(local_200);
+    GdipDeleteGraphics(uVar4);
+    hdcDst = GetDC((HWND)0x0);
+    local_168.cx = iVar5;
+    local_168.cy = local_218;
+    local_170.x = 0;
+    local_170.y = 0;
+    local_1a8[0].BlendOp = '\0';
+    local_1a8[0].BlendFlags = '\0';
+    local_1a8[0].SourceConstantAlpha = 0xdc;
+    local_1a8[0].AlphaFormat = '\x01';
+    GetWindowRect(local_1f8,&local_e8);
+    pHVar8 = local_1f0;
+    local_160.x = local_e8.left;
+    local_160.y = local_e8.top;
+    UpdateLayeredWindow(local_1f8,hdcDst,&local_160,&local_168,local_1f0,&local_170,0,local_1a8,2 );
+    ReleaseDC((HWND)0x0,hdcDst);
+    DeleteObject(local_1e8);
+    DeleteDC(pHVar8);
+  }
+  return;
+}
+
+
+void FUN_1400017f0(void)
+
+{
+  double dVar1;
+  double dVar2;
+  double dVar3;
+  UINT UVar4;
+  UINT UVar5;
+  HANDLE hThread;
+  double dVar6;
+  undefined1 auStackY_b8 [32];
+  LARGE_INTEGER local_88;
+  LARGE_INTEGER local_80;
+  LARGE_INTEGER local_78;
+  ulonglong local_70;
+  
+  local_70 = DAT_140011000 ^ (ulonglong)auStackY_b8;
+  hThread = GetCurrentThread();
+  SetThreadAffinityMask(hThread,0x30);
+  timeBeginPeriod(1);
+  if (DAT_1400111c8 == 0) {
+    QueryPerformanceFrequency((LARGE_INTEGER *)&DAT_1400111c8);
+  }
+  QueryPerformanceCounter(&local_88);
+  dVar3 = ((double)local_88.QuadPart / (double)DAT_1400111c8) * 1000.0;
+  do {
+    do {
+      while (DAT_140011248 == '\0') {
+        Sleep(5);
+      }
+    } while (DAT_140011248 == '\0');
+    do {
+      UVar4 = DAT_140011078;
+      if (DAT_140011078 == 1) {
+        mouse_event(2,0,0,0,0);
+        mouse_event(4,0,0,0,0);
+      }
+      else if (DAT_140011078 == 2) {
+        mouse_event(8,0,0,0,0);
+        mouse_event(0x10,0,0,0,0);
+      }
+      else {
+        UVar5 = MapVirtualKeyW(DAT_140011078,0);
+        keybd_event((BYTE)UVar4,(BYTE)UVar5,0,0);
+        keybd_event((BYTE)UVar4,(BYTE)UVar5,2,0);
+      }
+      LOCK();
+      DAT_140011814 = DAT_140011814 + 1;
+      UNLOCK();
+      if (DAT_1400111c8 == 0) {
+        QueryPerformanceFrequency((LARGE_INTEGER *)&DAT_1400111c8);
+      }
+      QueryPerformanceCounter(&local_88);
+      dVar1 = ((double)local_88.QuadPart / (double)DAT_1400111c8) * 1000.0;
+      if (5000.0 < dVar1 - dVar3) {
+        FUN_1400011d0();
+        dVar3 = dVar1;
+      }
+      dVar1 = 1000.0 / (double)DAT_140011080;
+      if (DAT_1400111c8 == 0) {
+        QueryPerformanceFrequency((LARGE_INTEGER *)&DAT_1400111c8);
+      }
+      QueryPerformanceCounter(&local_80);
+      dVar2 = (double)local_80.QuadPart;
+      dVar6 = (double)DAT_1400111c8;
+      if (2.0 < dVar1) {
+        Sleep((DWORD)(longlong)(dVar1 - 2.0));
+      }
+      do {
+        if (DAT_1400111c8 == 0) {
+          QueryPerformanceFrequency((LARGE_INTEGER *)&DAT_1400111c8);
+        }
+        QueryPerformanceCounter(&local_78);
+      } while ((((double)local_78.QuadPart / (double)DAT_1400111c8) * 1000.0 -
+                (dVar2 / dVar6) * 1000.0 < dVar1) && (DAT_140011248 != '\0'));
+    } while (DAT_140011248 != '\0');
+  } while( true );
+}
+
