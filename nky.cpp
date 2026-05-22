@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // main.cpp
 #include <windows.h>
 #include <string>
