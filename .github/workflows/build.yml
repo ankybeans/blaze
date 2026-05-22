@@ -1,0 +1,22 @@
+name: Build Windows C++
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: microsoft/setup-msbuild@v2
+
+      - name: Build
+        shell: cmd
+        run: |
+          cl /EHsc /std:c++17 nky.cpp /Fe:blaze.exe user32.lib gdi32.lib gdiplus.lib winhttp.lib ole32.lib
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: blaze-exe
+          path: blaze.exe
